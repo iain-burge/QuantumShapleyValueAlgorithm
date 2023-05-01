@@ -20,11 +20,11 @@
 
 #### Construct the two quantum systems (may be combined in one)
 
-![](figures/matlab1.png | width=50%)
+![](figures/matlab1.png | width=50)
 
 Repeatedly measure the rightmost qubit.
 
-![](figures/matlab2.png | width=50%)
+![](figures/matlab2.png | width=50)
 
 ** TODO **
 
