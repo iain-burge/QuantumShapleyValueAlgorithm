@@ -157,7 +157,7 @@ be used to construct the following example, consisting on the two quantun system
 
 ##### Unitaries general form
 
-$B^\pm(n) = \bigoplus^{2^n-1}_{i=0} \frac{1}{V_{max}} \pmatrix{ \sqrt{1-\phi^\pm(i,n)} &   \sqrt{\phi^\pm(i,n)}  \cr \sqrt{\phi^\pm(i,n)} & -\sqrt{1-\phi^\pm(i,n)}}$
+<img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab1.png" width=50%>
 
 where
 
