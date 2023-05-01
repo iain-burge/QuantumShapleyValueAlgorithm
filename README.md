@@ -147,7 +147,8 @@ plt.show()
 ```
 
 ![](figures/546.png)
-#### AAAAA
+
+**Figure 1.** We generated 32 random weighted voting games for each condition. For each case, we generated random weights $w_j\in \mathbb{N}$ such that $q\leq \sum_j w_j < 2q$. There were three primary scenarios: (1) Four players, voting threshold $q=8$; (2) Eight players, voting threshold $q=16$; and (3) 12 players, voting threshold $q=32$. For each scenario, we approximated every player's Shapley value with our quantum algorithm using various $\ell$'s, assuming $\epsilon=0$. Next, we compared each approximated Shapley value to it's true value using absolute error. Finally, we took the reciprocal of the mean for all Shapley value errors in each random game for each condition.
 
 ### 3.2 One-Equation Model
 
