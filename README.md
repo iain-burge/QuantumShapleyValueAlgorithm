@@ -24,7 +24,7 @@
 
 Repeatedly measure the rightmost qubit.
 
-<img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab2.png" width="50%"/>
+<img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab2.png" width="25%"/>
 
 ** TODO **
 
