@@ -18,11 +18,9 @@
 
 ### Random Voting Games & Quantum Shapley Values
 
-<a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/python/">Python Code</a>.
-
-The following script reports the results of precessing a random voting game,
-using our quantum algorithm to estimate the Shapley value of each player. It 
-also performs some basic data analysis on the predictions.
+The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/python/">python scripts under this folder</a>
+address random voting games using our quantum algorithm to estimate the Shapley value of each player. The scripts also perform 
+some basic data analysis on the predictions. A summary of the code and the results is shown below.
 
 #### Import Libraries
 
