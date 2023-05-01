@@ -14,7 +14,7 @@
 
 <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">Matlab Code</a>.
 
-## 3. Summary of Code and Results 
+## 3. Sample Code and Results 
 
 ### 3.1 Random Voting Games & Quantum Shapley Values
 
@@ -148,7 +148,7 @@ plt.show()
 
 ![](figures/546.png)
 
-### 3.2 One equation model
+### 3.2 One Equation Model
 
 The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">matlab scripts under this folder</a> can
 be used to construct the following example:
