@@ -14,7 +14,7 @@ Version: May 1st, 2023
 
 <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/python/">Python Code</a>.
 
-<a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/Matlab/">Matlab Code</a>.
+<a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">Matlab Code</a>.
 
 ## Summary of Results 
 
