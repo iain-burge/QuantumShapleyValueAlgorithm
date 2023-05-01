@@ -18,9 +18,9 @@
 
 ### Random Voting Games & Quantum Shapley Values
 
-The followinf results report random voting games and uses our quantum 
-algorithm to estimate the Shapley value of each player. It then performs 
-some basic data analysis on the predictions.
+The following script reports the results of precessing a random voting game,
+using our quantum algorithm to estimate the Shapley value of each player. It 
+also performs some basic data analysis on the predictions.
 
 #### Import Libraries
 
