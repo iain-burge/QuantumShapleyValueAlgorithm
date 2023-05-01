@@ -151,7 +151,7 @@ plt.show()
 ### 3.2 One-Equation Model
 
 The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">matlab scripts under this folder</a> can
-be used to construct the following example, consisting on the two quantun systems (may be combined in one): $B^{\pm} (H^{\otimes n}\otimes I) \vert 0 \rangle^{\otimes n+1}$
+be used to construct the following example, consisting of the two quantun systems (may be combined in one): $B^{\pm} (H^{\otimes n}\otimes I) \vert 0 \rangle^{\otimes n+1}$
 
 #### Quantum Version of $\gamma(n,m)$ and $V(S)$
 
@@ -167,6 +167,52 @@ where
 ``` matlab
 gamma = @(n,m) 1 / ( nchoosek(n,m)*(n+1) );
 c = @(i) nnz(dec2bin(i)-'0');
+```
+
+Example assuming $n+1=3, F = {1, 2, 3}$ and $i=1$
+
+``` matlab
+V_0 = 0;
+V_1 = 0;
+V_1_2  = 1;
+V_1_3  = 1;
+V_2 = 0;
+V_2_3 = 0;
+V_3 = 0;
+V_1_2_3 = 1;
+```
+
+$V^{+}()$ and $\phi^{-}()$
+
+``` matlab
+Vm = [V_0 V_3 V_2 V_2_3 ];
+phim = @(i,n) gamma(n,c(i)) * Vm(i);
+% value function upper bound
+Vmax = max([Vp Vm]);
+n = 2;
+Bplus = 1/Vmax * [...
+    sqrt(1-phip(1,n)) sqrt(phip(1,n)) 0 0 0 0 0 0;
+    sqrt(phip(1,n)) -sqrt(1-phip(1,n)) 0 0 0 0 0 0;
+    0 0 sqrt(1-phip(2,n)) sqrt(phip(2,n)) 0 0 0 0;
+    0 0 sqrt(phip(2,n)) -sqrt(1-phip(2,n)) 0 0 0 0;
+    0 0 0 0 sqrt(1-phip(2,n))  sqrt(phip(2,n)) 0 0;
+    0 0 0 0 sqrt(phip(2,n)) -sqrt(1-phip(2,n)) 0 0;
+    0 0 0 0 0 0 sqrt(1-phip(2,n))  sqrt(phip(2,n));
+    0 0 0 0 0 0 sqrt(phip(2,n)) -sqrt(1-phip(2,n))
+    ]
+```
+
+``` {verbatim}
+Bplus = 8×8
+    1.0000         0         0         0         0         0         0         0
+         0   -1.0000         0         0         0         0         0         0
+         0         0    0.9129    0.4082         0         0         0         0
+         0         0    0.4082   -0.9129         0         0         0         0
+         0         0         0         0    0.9129    0.4082         0         0
+         0         0         0         0    0.4082   -0.9129         0         0
+         0         0         0         0         0         0    0.9129    0.4082
+         0         0         0         0         0         0    0.4082   -0.9129
+
 ```
 
 ## References
