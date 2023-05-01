@@ -185,7 +185,7 @@ Iain Burge, Michel Barbeau and Joaquin Garcia-Alfaro. Quantum Algorithms for Sha
   title={Quantum Algorithms for Shapley Value Calculation},
   author={Burge, Iain and Barbeau, Michel and Garcia-Alfaro, Joaquin},
   booktitle={To appear},
-  pages={1--8},
+  pages={1--9},
   year={2023},
   month={May},
 }
