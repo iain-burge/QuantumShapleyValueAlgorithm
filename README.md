@@ -44,7 +44,7 @@ If using this code for research purposes, please cite:
 Iain Burge, Michel Barbeau and Joaquin Garcia-Alfaro. Quantum Algorithms for Shapley Value Calculation. *To appear*. May 2023.
 
 ```
-@inproceedings{barbeau-alfaro2019faking,
+@inproceedings{burge-barbeau-alfaro2023Shapley,
   title={Quantum Algorithms for Shapley Value Calculation},
   author={Burge, Iain and Barbeau, Michel and Garcia-Alfaro, Joaquin},
   booktitle={To appear},
