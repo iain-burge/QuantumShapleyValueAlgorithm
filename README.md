@@ -215,6 +215,97 @@ Bplus = 8×8
 
 ```
 
+``` matlab
+% check if unitary
+isequal(Bplus*Bplus', eye(size(Bplus*Bplus',1)))
+```
+
+``` {verbatim}
+ans =
+   1
+```
+
+``` matlab
+Bminus = 1/Vmax * [...
+    sqrt(1-phim(1,n)) sqrt(phim(1,n)) 0 0 0 0 0 0;
+    sqrt(phim(1,n)) -sqrt(1-phim(1,n)) 0 0 0 0 0 0;
+    0 0 sqrt(1-phim(2,n)) sqrt(phim(2,n)) 0 0 0 0;
+    0 0 sqrt(phim(2,n)) -sqrt(1-phim(2,n)) 0 0 0 0;
+    0 0 0 0 sqrt(1-phim(2,n))  sqrt(phim(2,n)) 0 0;
+    0 0 0 0 sqrt(phim(2,n)) -sqrt(1-phim(2,n)) 0 0;
+    0 0 0 0 0 0 sqrt(1-phim(2,n))  sqrt(phim(2,n));
+    0 0 0 0 0 0 sqrt(phim(2,n)) -sqrt(1-phim(2,n))
+    ]
+```
+
+``` {verbatim}
+Bminus = 8×8
+     1     0     0     0     0     0     0     0
+     0    -1     0     0     0     0     0     0
+     0     0     1     0     0     0     0     0
+     0     0     0    -1     0     0     0     0
+     0     0     0     0     1     0     0     0
+     0     0     0     0     0    -1     0     0
+     0     0     0     0     0     0     1     0
+     0     0     0     0     0     0     0    -1
+
+```
+
+``` matlab
+% check if unitary
+isequal(Bminus*Bminus', eye(size(Bminus*Bminus',1)))
+```
+
+``` {verbatim}
+ans =
+   1
+```
+
+
+``` matlab
+% create the input state
+H = gate.qft(2);
+I = gate.id(2)
+```
+
+``` {verbatim}
+   (1,1)        1
+   (2,2)        1
+```
+
+``` matlab
+In = u_propagate(state('000'),tensor(tensor(H,H),I))
+```
+
+
+``` {verbatim}
+In = +0.5 |000> +0.5 |010> +0.5 |100> +0.5 |110>
+```
+
+``` matlab
+% samples
+sp = []; sm = [];
+for k=1:50
+    % apply the Shappley gate
+    Ou = u_propagate(In, Bplus);
+    % measure the 3rd qubit
+    [~,b,~] = measure(Ou, 3);
+    cbit = b - 1;
+    sp = [ sp cbit ];
+    % apply the Shappley gate
+    Ou = u_propagate(In, Bminus);
+    % measure the 3rd qubit
+    [~,b,~] = measure(Ou, 3);
+    cbit = b - 1;
+    sm = [ sm cbit ];
+end
+fprintf('Shapply value is: %6.1f', Vmax * (mean(sp) - mean(sm)));
+```
+
+``` {verbatim}
+Shapply value is:    0.1
+```
+
 ## References
 
 If using this code for research purposes, please cite:
