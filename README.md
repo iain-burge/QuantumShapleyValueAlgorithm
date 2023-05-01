@@ -18,11 +18,12 @@
 
 ### One equation model
 
-#### Construct the two quantum systems (may be combined in one)
+The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">matlab scripts under this folder</a> can
+be used to construct the following example:
 
 <img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab1.png" width="50%"/>
 
-Repeatedly measure the rightmost qubit.
+If we wepeatedly measure now the rightmost qubit ...
 
 <img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab2.png" width="25%"/>
 
