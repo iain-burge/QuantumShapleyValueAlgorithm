@@ -1,6 +1,6 @@
 # Quantum Algorithms for Shapley Value Calculation
 
-## Authors
+## 1. Authors
 
 <a href="https://github.com/iain-burge/iain-burge">Iain Burge</a>
 
@@ -8,15 +8,15 @@
 
 <a href="http://www-public.imtbs-tsp.eu/~garcia_a/web/">Joaquin Garcia-Alfaro</a>
 
-## Resources
+## 2. Available Resources
 
 <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/python/">Python Code</a>.
 
 <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">Matlab Code</a>.
 
-## Summary of Code and Results 
+## 3. Summary of Code and Results 
 
-### Random Voting Games & Quantum Shapley Values
+### 3.1 Random Voting Games & Quantum Shapley Values
 
 The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/python/">python scripts under this folder</a>
 address random voting games using our quantum algorithm to estimate the Shapley value of each player. The scripts also perform 
@@ -148,7 +148,7 @@ plt.show()
 
 ![](figures/546.png)
 
-### One equation model
+### 3.2 One equation model
 
 The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">matlab scripts under this folder</a> can
 be used to construct the following example:
