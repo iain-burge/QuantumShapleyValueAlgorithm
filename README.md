@@ -14,9 +14,11 @@
 
 <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">Matlab Code</a>.
 
-## Summary of Results 
+## Summary of Code and Results 
 
 ### Random Voting Games & Quantum Shapley Values
+
+<a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/python/">Python Code</a>.
 
 The following script reports the results of precessing a random voting game,
 using our quantum algorithm to estimate the Shapley value of each player. It 
@@ -46,7 +48,7 @@ thresholdBitCond  = [4,5,6]
 roughVarianceCond = [1,2,2]
 ```
 
-### Run Simulations
+#### Run Simulations
 
 ``` python
 simulations = {}
