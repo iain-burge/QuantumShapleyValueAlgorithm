@@ -148,10 +148,10 @@ plt.show()
 
 ![](figures/546.png)
 
-### 3.2 One Equation Model
+### 3.2 One-Equation Model
 
 The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">matlab scripts under this folder</a> can
-be used to construct the following example:
+be used to construct the following example, consisting on the two quantun systems (may be combined in one): $B^{\pm} (H^{\otimes n}\otimes I) \vert 0 \rangle^{\otimes n+1}$
 
 <img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab1.png" width="50%"/>
 
