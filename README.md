@@ -14,12 +14,12 @@
 
 <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">Matlab Code</a>.
 
-## 3. Sample Code and Results 
+## 3. Sample Code and Results
 
 ### 3.1 Random Voting Games & Quantum Shapley Values
 
 The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/python/">python scripts under this folder</a>
-address random voting games using our quantum algorithm to estimate the Shapley value of each player. The scripts also perform 
+address random voting games using our quantum algorithm to estimate the Shapley value of each player. The scripts also perform
 some basic data analysis on the predictions. A summary of the code and the results is shown below.
 
 #### Import Libraries
@@ -120,7 +120,7 @@ for i, n in enumerate(numPlayersCond):
             trialOutcomes.append(
                 meanAbsError(qshaps, cshaps)
             )
-        
+
         trialOutcomes = np.array(trialOutcomes)
         resultsX.append(ell)
         resultsY.append(trialOutcomes.mean())
@@ -128,10 +128,10 @@ for i, n in enumerate(numPlayersCond):
 
         # resultsX += len(trialOutcomes) * [ell]
         # resultsY += trialOutcomes
-    
+
     ax[i].set_title(f"{n} Players")#, Threshold: {2**thresholdBitCond[i]}")
     ax[i].bar(
-        np.array(resultsX), 
+        np.array(resultsX),
         1/np.array(resultsY),
         # yerr=resultErr,
         align='center',
@@ -153,13 +153,25 @@ plt.show()
 The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">matlab scripts under this folder</a> can
 be used to construct the following example, consisting on the two quantun systems (may be combined in one): $B^{\pm} (H^{\otimes n}\otimes I) \vert 0 \rangle^{\otimes n+1}$
 
-<img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab1.png" width="50%"/>
+#### Quantum Version of $\gamma(n,m)$ and $V(S)$
 
-If we wepeatedly measure now the rightmost qubit ...
+##### Unitaries general form
 
-<img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab2.png" width="25%"/>
+$B^\pm(n) = \bigoplus_{i=0}^{2^n-1}
+\frac{1}{V_{max}}
+\pmatrix{
+\sqrt{1-\phi^\pm(i,n)} &   \sqrt{\phi^\pm(i,n)}  \cr
+\sqrt{\phi^\pm(i,n)} & -\sqrt{1-\phi^\pm(i,n)}   }$
 
-** TODO **
+where
+
+* $\phi^{\pm}(i,n) = \gamma(n,c(i))  \cdot V^{\pm}(i)$
+* $c(i)$ is the number of ones in the binary representation of $i$.
+
+``` matlab
+gamma = @(n,m) 1 / ( nchoosek(n,m)*(n+1) );
+c = @(i) nnz(dec2bin(i)-'0');
+```
 
 ## References
 
@@ -179,4 +191,4 @@ Iain Burge, Michel Barbeau and Joaquin Garcia-Alfaro. Quantum Algorithms for Sha
 ```
 
 
- 
+
