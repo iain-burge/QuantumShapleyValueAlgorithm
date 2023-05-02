@@ -1,21 +1,19 @@
-%% Quantum Shapley Value Calculation
-% *Author*: Michel Barbeau
+%% 1. Quantum Algorithms for Shapley Value Calculation
+% *Authors*: Iain Burge, Michel Barbeau, Joaquin Garcia-Alfaro
 % 
-% Version: April 26, 2023
+% Version: May 2nd, 2023
 
 % cd to QIT directory
 clear
 cd './qit'
 % run the init script
 init
-%% *One-equation quantum model (non-efficient, made efficient with Iain's ideas)*
-% Construct the two quantum systems (may be combined in one):
-% $$B^{\pm} (H^{\otimes n}\otimes I) \vert 0 \rangle^{\otimes n+1}$$
-% 
+%% *1.1. One-equation quantum model* 
+% *Construct the following quantum system:* $B^{\pm} (H^{\otimes n}\otimes I) \vert 0 \rangle^{\otimes n+1}$.
 % Repeatedly measure the rightmost qubit. The difference of the expected values 
-% of the systems is \frac{\Phi_i}{V_{max}}.
-%% Quantum Version of $\gamma \left(n,m\right)$ and$V(S)$
-% Unitaries general form
+% of the systems is $\frac{\Phi_i}{V_{max}}$.
+%% 1.2 Quantum Version of $\gamma \left(n,m\right)$ and$V(S)$
+% 1.2.1 Unitaries general form
 % 
 % 
 % $$B^\pm(n) = \bigoplus_{i=0}^{2^n-1} \pmatrix{ \sqrt{1-\phi^\pm(i,n)} &   
@@ -79,29 +77,11 @@ for k=1:10000
     u = [ u cbit ];
 end
 fprintf('Shapply value is: %2.4f', 2^n * Wmax * mean(u) );
-%% Quantum Algorithm for Weighted Voting Games
-% Prepartion of partition register
-% 
-% $$W_{\ell} H^{\otimes 2^{\ell}} \vert 0 \rangle^{\otimes 2^{\ell}}$$
-% 
-% $$W_\ell = \bigoplus_{i=0}^{2^n-1} \pmatrix{ \sqrt{W_{\ell}(i))} &   \sqrt{W_{\ell}(i+1)}  
-% \cr\sqrt{W_{\ell}(i+1)} & -\sqrt{W_{\ell}(i)}   }$$
-
-%partition functions
-t = @(ell,k) ( sin( (k*pi) / 2^(ell+1) ) )^2;
-w = @(ell,k) t(ell,k+1) - t(ell,k); 
-ell = 1;
-for k=0:2^ell-1
-    w(ell,k)
-end
-%% 
-% Controlled rotations
+%% References
 % 
 % 
-
-
-%% Reference
-% Burge, I., Barbeau, M., & Garcia-Alfaro, J. (2023). A Quantum Algorithm for 
-% Shapley Value Estimation. _arXiv preprint arXiv:2301.04727_.
+% [1] Burge, I., Barbeau, M., & Garcia-Alfaro, J. (February 2023). A Quantum 
+% Algorithm for Shapley Value Estimation. _arXiv preprint arXiv:2301.04727_.
 % 
-%
+% [2] Burge, I., Barbeau, M., & Garcia-Alfaro, J. (May 2023). Quantum Algorithms 
+% for Shapley Value Calculation, _to appear_.

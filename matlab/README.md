@@ -19,7 +19,9 @@
 ### 3.1 One-Equation Model
 
 The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">matlab scripts under this folder</a> can
-be used to construct the following example, consisting of the two quantun systems (may be combined in one): $B^{\pm} (H^{\otimes n}\otimes I) \vert 0 \rangle^{\otimes n+1}$
+be used to construct the following quantum system: $B^{\pm} (H^{\otimes n}\otimes I) \vert 0 \rangle^{\otimes n+1}$.
+
+Repeatedly measure the rightmost qubit. The difference of the expected values of the systems is $\frac{\Phi_i}{V_{max}}$.
 
 #### Quantum Version of $\gamma(n,m)$ and $V(S)$
 
@@ -37,86 +39,82 @@ gamma = @(n,m) 1 / ( nchoosek(n,m)*(n+1) );
 c = @(i) nnz(dec2bin(i)-'0');
 ```
 
-Example assuming $n+1=3, F = {1, 2, 3}$ and $i=1$
+Example assuming $n+1=3, F = {0, 1, 2}$ and $i=1$
 
 ``` matlab
+V_empty = 0;
 V_0 = 0;
+V_0_1  = 1;
+V_0_2  = 1;
 V_1 = 0;
-V_1_2  = 1;
-V_1_3  = 1;
+V_1_2 = 0;
 V_2 = 0;
-V_2_3 = 0;
-V_3 = 0;
-V_1_2_3 = 1;
+V_0_1_2 = 1;
 ```
 
-$V^{+}()$ and $\phi^{-}()$
+``` {verbatim}
+W(S)
+```
 
 ``` matlab
-Vm = [V_0 V_3 V_2 V_2_3 ];
-phim = @(i,n) gamma(n,c(i)) * Vm(i);
-% value function upper bound
-Vmax = max([Vp Vm]);
+W_0 = V_0 - V_empty;
+W_0_1 = V_0_1 - V_1;
+W_0_2 = V_0_2 - V_2
+```
+
+``` {verbatim}
+W_0_2 = 1
+```
+
+``` matlab
+W_0_1_2 = V_0_1_2 - V_1_2;
+W = [ W_0 W_0_1 W_0_2 W_0_1_2 ];
+Wmax = max(W);
+phi = @(i,n) gamma(n,c(i)) * W(i+1)/Wmax;
 n = 2;
-Bplus = 1/Vmax * [...
-    sqrt(1-phip(1,n)) sqrt(phip(1,n)) 0 0 0 0 0 0;
-    sqrt(phip(1,n)) -sqrt(1-phip(1,n)) 0 0 0 0 0 0;
-    0 0 sqrt(1-phip(2,n)) sqrt(phip(2,n)) 0 0 0 0;
-    0 0 sqrt(phip(2,n)) -sqrt(1-phip(2,n)) 0 0 0 0;
-    0 0 0 0 sqrt(1-phip(2,n))  sqrt(phip(2,n)) 0 0;
-    0 0 0 0 sqrt(phip(2,n)) -sqrt(1-phip(2,n)) 0 0;
-    0 0 0 0 0 0 sqrt(1-phip(2,n))  sqrt(phip(2,n));
-    0 0 0 0 0 0 sqrt(phip(2,n)) -sqrt(1-phip(2,n))
+B = [...
+    sqrt(1-phi(0,n)) sqrt(phi(0,n))   0 0 0 0 0 0;
+    sqrt(phi(0,n))  -sqrt(1-phi(0,n)) 0 0 0 0 0 0;
+    0 0 sqrt(1-phi(1,n)) sqrt(phi(1,n)) 0 0 0 0;
+    0 0 sqrt(phi(1,n)) -sqrt(1-phi(1,n)) 0 0 0 0;
+    0 0 0 0 sqrt(1-phi(2,n))  sqrt(phi(2,n)) 0 0;
+    0 0 0 0 sqrt(phi(2,n)) -sqrt(1-phi(2,n)) 0 0;
+    0 0 0 0 0 0 sqrt(1-phi(3,n))  sqrt(phi(3,n));
+    0 0 0 0 0 0 sqrt(phi(3,n)) -sqrt(1-phi(3,n))
     ]
 ```
 
 ``` {verbatim}
-Bplus = 8×8
+B = 8×8
     1.0000         0         0         0         0         0         0         0
          0   -1.0000         0         0         0         0         0         0
          0         0    0.9129    0.4082         0         0         0         0
          0         0    0.4082   -0.9129         0         0         0         0
          0         0         0         0    0.9129    0.4082         0         0
          0         0         0         0    0.4082   -0.9129         0         0
-         0         0         0         0         0         0    0.9129    0.4082
-         0         0         0         0         0         0    0.4082   -0.9129
-
+         0         0         0         0         0         0    0.8165    0.5774
+         0         0         0         0         0         0    0.5774   -0.8165
 ```
 
 ``` matlab
 % check if unitary
-isequal(Bplus*Bplus', eye(size(Bplus*Bplus',1)))
+isequal(B*B', eye(size(B*B',1)))
 ```
 
 ``` {verbatim}
-ans =
+ans = logical
    1
 ```
 
 ``` matlab
-Bminus = 1/Vmax * [...
-    sqrt(1-phim(1,n)) sqrt(phim(1,n)) 0 0 0 0 0 0;
-    sqrt(phim(1,n)) -sqrt(1-phim(1,n)) 0 0 0 0 0 0;
-    0 0 sqrt(1-phim(2,n)) sqrt(phim(2,n)) 0 0 0 0;
-    0 0 sqrt(phim(2,n)) -sqrt(1-phim(2,n)) 0 0 0 0;
-    0 0 0 0 sqrt(1-phim(2,n))  sqrt(phim(2,n)) 0 0;
-    0 0 0 0 sqrt(phim(2,n)) -sqrt(1-phim(2,n)) 0 0;
-    0 0 0 0 0 0 sqrt(1-phim(2,n))  sqrt(phim(2,n));
-    0 0 0 0 0 0 sqrt(phim(2,n)) -sqrt(1-phim(2,n))
-    ]
+% create the input state
+H = gate.qft(2);
+I = gate.id(2)
 ```
 
 ``` {verbatim}
-Bminus = 8×8
-     1     0     0     0     0     0     0     0
-     0    -1     0     0     0     0     0     0
-     0     0     1     0     0     0     0     0
-     0     0     0    -1     0     0     0     0
-     0     0     0     0     1     0     0     0
-     0     0     0     0     0    -1     0     0
-     0     0     0     0     0     0     1     0
-     0     0     0     0     0     0     0    -1
-
+   (1,1)        1
+   (2,2)        1
 ```
 
 ``` matlab
@@ -151,28 +149,61 @@ In = +0.5 |000> +0.5 |010> +0.5 |100> +0.5 |110>
 ```
 
 ``` matlab
+u_propagate(In, B)
+```
+
+
+``` {verbatim}
+ans = +0.5 |000> +0.456435 |010> +0.204124 |011> +0.456435 |100> +0.204124 |101> +0.408248 |110> +0.288675 |111>
+```
+
+``` matlab
 % samples
-sp = []; sm = [];
-for k=1:50
+u = [];
+for k=1:10000
     % apply the Shappley gate
-    Ou = u_propagate(In, Bplus);
+    Ou = u_propagate(In, B);
     % measure the 3rd qubit
     [~,b,~] = measure(Ou, 3);
     cbit = b - 1;
-    sp = [ sp cbit ];
-    % apply the Shappley gate
-    Ou = u_propagate(In, Bminus);
-    % measure the 3rd qubit
-    [~,b,~] = measure(Ou, 3);
-    cbit = b - 1;
-    sm = [ sm cbit ];
+    u = [ u cbit ];
 end
-fprintf('Shapply value is: %6.1f', Vmax * (mean(sp) - mean(sm)));
+fprintf('Shapply value is: %2.4f', 2^n * Wmax * mean(u) );
 ```
 
 ``` {verbatim}
-Shapply value is:    0.1
+Shapply value is:    0.6800
 ```
+
+
+### 3.2 Quantum Algorithm for Weighted Voting Games
+
+The <a href="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/tree/main/matlab/">matlab scripts under this folder</a> can also
+be used to compute Shapley values for weighted voting games.
+
+#### 3.2.1 Register Preparation
+
+Let us prepare the following register:
+
+$W_{\ell} H^{\otimes 2^{\ell}} \vert 0 \rangle^{\otimes 2^{\ell}}$
+
+$W_\ell = \bigoplus_{i=0}^{2^n-1} \pmatrix{ \sqrt{W_{\ell}(i))} &   \sqrt{W_{\ell}(i+1)}  \cr \sqrt{W_{\ell}(i+1)} & -\sqrt{W_{\ell}(i)} }$
+
+``` matlab
+%partition functions
+t = @(ell,k) ( sin( (k*pi) / 2^(ell+1) ) )^2;
+w = @(ell,k) t(ell,k+1) - t(ell,k);
+ell = 1;
+for k=0:2^ell-1
+    w(ell,k)
+end
+```
+
+``` {verbatim}
+ans = 0.5000
+ans = 0.5000
+```
+
 
 ## References
 
