@@ -27,7 +27,7 @@ Repeatedly measure the rightmost qubit. The difference of the expected values of
 
 ##### Unitaries general form
 
-<img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab1.png" width=50%>
+<img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab1.png" width=35%>
 
 where
 
@@ -185,9 +185,7 @@ be used to compute Shapley values for weighted voting games.
 
 Let us prepare the following register:
 
-$W_{\ell} H^{\otimes 2^{\ell}} \vert 0 \rangle^{\otimes 2^{\ell}}$
-
-$W_\ell = \bigoplus_{i=0}^{2^n-1} \pmatrix{ \sqrt{W_{\ell}(i))} &   \sqrt{W_{\ell}(i+1)}  \cr \sqrt{W_{\ell}(i+1)} & -\sqrt{W_{\ell}(i)} }$
+<img src="https://github.com/iain-burge/QuantumShapleyValueAlgorithm/blob/main/figures/matlab2.png" width=35%>
 
 ``` matlab
 %partition functions
