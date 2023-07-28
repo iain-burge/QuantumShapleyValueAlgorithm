@@ -113,6 +113,10 @@ def randomVotingGameGate(thresholdBits: int, playerVal: list[float]):
             [player] + voteReg
         )
 
+    #temp:
+    print(circuit.draw())
+    #:temp
+
     return circuit.to_gate(), playerReg, utilityReg, allReg
 
 def classicalVotingShap(
@@ -191,8 +195,8 @@ def quantumVotingShap(
 
 
 def main():
-    thresholdBits = 5
-    numPlayers    = 8
+    thresholdBits = 3
+    numPlayers    = 3
 
     threshold = 2**(thresholdBits-1)
 
