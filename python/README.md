@@ -152,13 +152,13 @@ plt.show()
 
 If using this code for research purposes, please cite:
 
-Iain Burge, Michel Barbeau and Joaquin Garcia-Alfaro. Quantum Algorithms for Shapley Value Calculation. *To appear*. May 2023.
+Iain Burge, Michel Barbeau and Joaquin Garcia-Alfaro. Quantum Algorithms for Shapley Value Calculation. 2023 IEEE International Conference on Quantum Computing and Engineering (QCE 2023), Bellevue, WA, United States, September 17-22, 2023.
 
 ```
 @inproceedings{burge-barbeau-alfaro2023Shapley,
   title={Quantum Algorithms for Shapley Value Calculation},
   author={Burge, Iain and Barbeau, Michel and Garcia-Alfaro, Joaquin},
-  booktitle={2023 IEEE International Conference on Quantum Computing & Engineering (QCE 2023), Bellevue, WA, United States, September 17-22, 2023},
+  booktitle={2023 IEEE International Conference on Quantum Computing and Engineering (QCE 2023), Bellevue, WA, United States, September 17-22, 2023},
   pages={1--9},
   year={2023},
   month={September},
