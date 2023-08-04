@@ -150,10 +150,9 @@ plt.show()
 
 ## Minimal Requirements
 
-The current code has been tested under the following set of minimal requirements:
+The code has been tested using the following set of libraries and requirements:
 
-Minimal requirements:
-
+- Python 3.9.2
 - IPython 8.14.0
 - ipykernel 6.25.0
 - ipywidgets 8.1.0
