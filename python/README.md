@@ -148,6 +148,34 @@ plt.show()
 
 ![](figures/546.png)
 
+## Minimal Requirements
+
+The current code has been tested under the following set of minimal requirements:
+
+Minimal requirements:
+
+- IPython 8.14.0
+- ipykernel 6.25.0
+- ipywidgets 8.1.0
+- jupyter_client 8.3.0
+- jupyter_core 5.3.1
+- jupyter_server 2.7.0
+- jupyterlab 4.0.4
+- nbclient 0.8.0
+- nbconvert 7.7.3
+- nbformat 5.9.2
+- notebook 7.0.1
+- qtconsole 5.4.3
+- traitlets 5.9.0
+- numpy 1.25.2
+- matplotlib 3.7.2
+- qiskit 0.44.0
+- tqdm 4.65.0
+- qiskit aer-0.12.2
+
+Additionally, the following tutorial for amplitude estimation was used as a framework: 
+https://qiskit.org/ecosystem/finance/tutorials/00_amplitude_estimation.html 
+
 ## References
 
 If using this code for research purposes, please cite:
