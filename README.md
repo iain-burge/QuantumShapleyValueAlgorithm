@@ -330,7 +330,7 @@ Iain Burge, Michel Barbeau and Joaquin Garcia-Alfaro. A Shapley Value Estimation
 @misc{burge2024shapleyvalueestimationspeedup,
   title={A Shapley Value Estimation Speedup for Efficient Explainable Quantum AI}, 
   author={Iain Burge and Michel Barbeau and Joaquin Garcia-Alfaro},
-  year={2024},
+  year={2025},
   eprint={2412.14639},
   archivePrefix={arXiv},
   primaryClass={cs.CR},
